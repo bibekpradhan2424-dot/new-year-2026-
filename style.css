@@ -1,0 +1,223 @@
+
+/* Ensure body fills screen */
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    background: linear-gradient(to right, #ff9a9e, #fad0c4);
+}
+
+/* Fireworks canvas stays behind everything */
+#fireworksCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* clicks go through */
+    z-index: 0; /* LOWER than content */
+}
+
+/* Your content stays above canvas */
+.home-container, nav {
+    position: relative;
+    z-index: 1; /* HIGHER than canvas */
+}
+
+
+/* General styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(to right, #ff9a9e, #fad0c4);
+    color: #ffffff;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+/* Navigation bar */
+/* NAVIGATION STYLING */
+nav {
+    position: relative;        /* stays above canvas */
+    z-index: 2;                /* higher than canvas */
+    background-color: rgba(255, 255, 255, 0.95); 
+    padding: 5px 0;            /* small top & bottom padding */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    font-size: 16px;           /* overall font size */
+}
+
+/* Remove extra spacing from ul */
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;       /* vertically centers links */
+    height: 100%;              /* use nav height only */
+}
+
+/* Make links compact */
+nav ul li {
+    margin: 0 10px;            /* horizontal spacing */
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    line-height: 1;            /* reduces link height */
+    padding: 5px 8px;          /* small clickable area */
+    display: inline-block;
+}
+
+
+/* Home page container */
+.home-container {
+    padding: 50px 20px;
+    position: relative;
+    z-index: 2;
+}
+
+/* Buttons */
+button {
+    padding: 10px 20px;
+    font-size: 1.2em;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    background-color: #ff6f61;
+    color: white;
+    margin-top: 20px;
+}
+
+/* Hearts floating */
+#hearts {
+    position: relative;
+    height: 200px;
+}
+
+/* Gallery images */
+.images img {
+    width: 200px;
+    margin: 20px;
+    border-radius: 15px;
+}
+
+/* Message textarea */
+textarea {
+    width: 60%;
+    height: 100px;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 1em;
+}
+#displayMessage {
+    margin-top: 20px;
+    font-size: 1.5em;
+    color: #d6336c;
+}
+
+/* Fireworks canvas */
+#fireworksCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+.confetti {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    background-color: hsl(calc(360 * var(--i, 0)), 100%, 50%);
+    top: -10px;
+    z-index: 3;
+    opacity: 0.7;
+    animation-name: fall;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(100vh) rotate(360deg);
+    }
+}
+
+.countdown-container {
+    padding: 60px 20px;        /* reduce top/bottom spacing */
+    text-align: center;
+    color: #fff;
+    text-shadow: 2px 2px 8px #000;
+}
+
+.countdown-container h1 {
+    font-size: 2.5em;          /* smaller, still noticeable */
+    margin-bottom: 30px;
+    color: #ffdd57;
+    text-shadow: 2px 2px 8px #ff0000;
+}
+
+#countdown {
+    font-size: 2.5em;          /* smaller countdown numbers */
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    gap: 25px;                 /* reduce spacing between units */
+}
+
+#countdown span {
+    background: rgba(0,0,0,0.4); /* slightly transparent box */
+    padding: 15px 20px;          /* smaller padding */
+    border-radius: 12px;
+    box-shadow: 0 0 15px #fff;
+    color: #ffeb3b;             /* bright number color */
+}
+
+/* Optional: if using time-box wrapper */
+.time-box span {
+    font-size: 2.5em;            /* matches #countdown */
+}
+.time-box {
+    text-align: center;
+}
+.gallery-container {
+    padding: 50px 20px;
+    text-align: center;
+    color: #fff;
+    text-shadow: 1px 1px 5px #000;
+}
+
+.gallery-container h1 {
+    font-size: 2.5em;
+    margin-bottom: 40px;
+    color: #ffdd57;
+    text-shadow: 2px 2px 8px #ff0000;
+}
+
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.gallery img {
+    max-width: 300px;
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(255,255,255,0.5);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.gallery img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px rgba(255,255,255,0.8);
+}
